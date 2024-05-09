@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Footer1 = () => {
     return (
-        <div className='mx-[3rem] sm:px-8 bg-[#003FFE] rounded-lg flex sm:flex-row sm:gap-0 gap-8 flex-col justify-evenly items-center sm:h-[14rem] h-fit py-4'>
+        <div className='mx-[3rem] sm:px-8 bg-richblue-900 rounded-lg flex sm:flex-row sm:gap-0 gap-8 flex-col justify-evenly items-center sm:h-[14rem] h-fit py-4'>
             <div className='px-4'>
                 <Link to={"/"} className='flex md:flex-row flex-col gap-2 items-center'>
-                    <img src={Logo} alt="LearniFi" loading='lazy' />
+                    <img src={Logo} alt="LearniFi" loading='lazy' className='rounded-[50%]' />
                     <p className='text-white text-[1.6rem] font-bold font-mono'>LearniFi</p>
                 </Link>
             </div>

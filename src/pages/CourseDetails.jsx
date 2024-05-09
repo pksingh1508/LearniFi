@@ -36,7 +36,7 @@ function CourseDetails() {
         ; (async () => {
             try {
                 const res = await fetchCourseDetails(courseId)
-                // console.log("course details res: ", res)
+                console.log("course details res: ", res)
                 setResponse(res)
             } catch (error) {
                 console.log("Could not fetch Course Details")
@@ -44,12 +44,12 @@ function CourseDetails() {
         })()
     }, [courseId])
 
-    // console.log("response: ", response)
+    console.log("response: ", response)
 
     // Calculating Avg Review count
     const [avgReviewCount, setAvgReviewCount] = useState(0)
     useEffect(() => {
-        const count = GetAvgRating(response?.data?.courseDetails.ratingAndReviews)
+        const count = GetAvgRating(response?.data?.ratingAndReviews)
         setAvgReviewCount(count)
     }, [response])
     // console.log("avgReviewCount: ", avgReviewCount)
@@ -87,8 +87,10 @@ function CourseDetails() {
         return <Error />
     }
 
+
+
     const {
-        _id: course_id,
+        _id: _id,
         courseName,
         courseDescription,
         thumbnail,
@@ -97,9 +99,9 @@ function CourseDetails() {
         courseContent,
         ratingAndReviews,
         instructor,
-        studentsEnroled,
+        studentsEnrolled,
         createdAt,
-    } = response.data?.courseDetails
+    } = response?.data[0]
 
     const handleBuyCourse = () => {
         if (token) {
@@ -152,7 +154,7 @@ function CourseDetails() {
                                 <span className="text-yellow-25">{avgReviewCount}</span>
                                 <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
                                 <span>{`(${ratingAndReviews.length} reviews)`}</span>
-                                <span>{`${studentsEnroled.length} students enrolled`}</span>
+                                <span>{`${studentsEnrolled.length} students enrolled`}</span>
                             </div>
                             <div>
                                 <p className="">
@@ -183,7 +185,7 @@ function CourseDetails() {
                     {/* Courses Card */}
                     <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
                         <CourseDetailsCard
-                            course={response?.data?.courseDetails}
+                            course={response.data[0]}
                             setConfirmationModal={setConfirmationModal}
                             handleBuyCourse={handleBuyCourse}
                         />

@@ -16,36 +16,66 @@ function Catalog() {
     const { catalogName } = useParams()
     const [active, setActive] = useState(1)
     const [catalogPageData, setCatalogPageData] = useState(null)
-    const [categoryId, setCategoryId] = useState('');
-    // Fetch All Categories
+    const [categoryId, setCategoryId] = useState("");
+
+    // // Fetch All Categories
+    // useEffect(() => {
+    //     ; (async () => {
+    //         try {
+    //             const res = await apiConnector("GET", categories.CATEGORIES_API)
+    //             const category_id = res?.data?.data?.filter(
+    //                 (ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName
+    //             )[0]._id
+    //             setCategoryId(category_id)
+    //             console.log(category_id);
+    //             console.log(res);
+    //         } catch (error) {
+    //             console.log("Could not fetch Categories.", error)
+    //         }
+    //     })()
+    // }, [catalogName])
+    // useEffect(() => {
+    //     if (categoryId) {
+    //         ; (async () => {
+    //             try {
+    //                 const res = await getCatalogPageData(categoryId)
+    //                 setCatalogPageData(res)
+    //                 console.log("catalogpagedata" + res);
+    //             } catch (error) {
+    //                 console.log(error)
+    //             }
+    //         })()
+    //     }
+    // }, [categoryId])
+
+    //Fetch all categories
     useEffect(() => {
-        ; (async () => {
-            try {
-                const res = await apiConnector("GET", categories.CATEGORIES_API)
-                const category_id = res?.data?.data?.filter(
-                    (ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName
-                )[0]._id
-                setCategoryId(category_id)
-                console.log(category_id);
-                console.log(res);
-            } catch (error) {
-                console.log("Could not fetch Categories.", error)
-            }
-        })()
-    }, [catalogName])
-    useEffect(() => {
-        if (categoryId) {
-            ; (async () => {
-                try {
-                    const res = await getCatalogPageData(categoryId)
-                    setCatalogPageData(res)
-                    console.log("catalogpagedata" + res);
-                } catch (error) {
-                    console.log(error)
-                }
-            })()
+        const getCategories = async () => {
+            const res = await apiConnector("GET", categories.CATEGORIES_API);
+            const category_id =
+                res?.data?.data?.filter((ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName)[0]._id;
+            setCategoryId(category_id);
         }
-    }, [categoryId])
+        getCategories();
+    }, [catalogName]);
+
+    useEffect(() => {
+        const getCategoryDetails = async () => {
+            try {
+                console.log("category Id : " + categoryId);
+                const res = await getCatalogPageData(categoryId);
+                console.log("PRinting res: ", res);
+                setCatalogPageData(res);
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
+        if (categoryId) {
+            getCategoryDetails();
+        }
+
+    }, [categoryId]);
 
     if (loading || !catalogPageData) {
         return (

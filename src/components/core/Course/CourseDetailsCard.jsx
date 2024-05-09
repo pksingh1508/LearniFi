@@ -23,9 +23,9 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
   const dispatch = useDispatch()
 
   const {
-    thumbnail: ThumbnailImage,
-    price: CurrentPrice,
-    _id: courseId,
+    thumbnail: thumbnail,
+    price: price,
+    _id: _id,
   } = course
 
   const handleShare = () => {
@@ -61,29 +61,29 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
       >
         {/* Course Image */}
         <img
-          src={ThumbnailImage}
+          src={thumbnail}
           alt={course?.courseName}
           className="max-h-[300px] min-h-[180px] w-[400px] overflow-hidden rounded-2xl object-cover md:max-w-full"
         />
 
         <div className="px-4">
           <div className="space-x-3 pb-4 text-3xl font-semibold">
-            Rs. {CurrentPrice}
+            Rs. {price}
           </div>
           <div className="flex flex-col gap-4">
             <button
               className="yellowButton"
               onClick={
-                user && course?.studentsEnroled.includes(user?._id)
+                user && course?.studentsEnrolled.includes(user?._id)
                   ? () => navigate("/dashboard/enrolled-courses")
                   : handleBuyCourse
               }
             >
-              {user && course?.studentsEnroled.includes(user?._id)
+              {user && course?.studentsEnrolled.includes(user?._id)
                 ? "Go To Course"
                 : "Buy Now"}
             </button>
-            {(!user || !course?.studentsEnroled.includes(user?._id)) && (
+            {(!user || !course?.studentsEnrolled.includes(user?._id)) && (
               <button onClick={handleAddToCart} className="blackButton">
                 Add to Cart
               </button>

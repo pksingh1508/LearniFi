@@ -1,7 +1,9 @@
 const Profile = require("../models/Profile");
+const CourseProgress = require("../models/CourseProgress");
 const User = require("../models/User");
 const Course = require("../models/Course")
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
+const { convertSecondsToDuration } = require("../utils/secToDuration");
 // Method for updating a profile
 exports.updateProfile = async (req, res) => {
 	try {
@@ -136,7 +138,8 @@ exports.updateDisplayPicture = async (req, res) => {
 
 exports.getEnrolledCourses = async (req, res) => {
 	try {
-		const userId = req.user.id
+		const userId = req.user.id;
+		// const { userId } = req.body;
 		let userDetails = await User.findOne({
 			_id: userId,
 		})
@@ -150,6 +153,7 @@ exports.getEnrolledCourses = async (req, res) => {
 				},
 			})
 			.exec()
+		// console.log("User details: " + userDetails);
 		userDetails = userDetails.toObject()
 		var SubsectionLength = 0
 		for (var i = 0; i < userDetails.courses.length; i++) {

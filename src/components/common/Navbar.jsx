@@ -37,7 +37,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='flex h-14 items-center bg-[#003FFE] justify-center border-b-[1px] border-richblack-200'>
+        <div className='flex h-14 items-center bg-richblue-500 justify-center border-b-[1px] border-richblack-200'>
             <div className='flex w-11/12 max-w-maxContent items-center justify-between'>
                 {/* Image added */}
                 <Link to={"/"} className='flex gap-2 items-center'>
