@@ -41,7 +41,7 @@ const Navbar = () => {
             <div className='flex w-11/12 max-w-maxContent items-center justify-between'>
                 {/* Image added */}
                 <Link to={"/"} className='flex gap-2 items-center'>
-                    <img src={Logo} alt="LearniFi" loading='lazy' />
+                    <img src={Logo} alt="LearniFi" loading='lazy' className='rounded-[50%]' />
                     <p className='text-white text-[1.6rem] font-bold font-mono'>LearniFi</p>
                 </Link>
                 {/* Nav Links */}
