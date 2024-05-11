@@ -15,7 +15,7 @@ const MyProfile = () => {
             <h1 className='flex w-[70%] justify-start font-semibold'>My Profile</h1>
 
             {/* section 1 */}
-            <div className='flex w-[20%] sm:w-[40%] md:w-[50%] lg:w-[70%] md:justify-between md:items-center lg:justify-between lg:items-center rounded-[0.5rem] bg-richblack-800 px-[3rem] py-2 flex-col sm:flex-row'>
+            <div className='flex w-full md:justify-between md:items-center lg:justify-between lg:items-center rounded-[0.5rem] bg-richblack-800 px-[3rem] py-2 flex-col lg:flex-row'>
                 <div className='flex lg:flex-row flex-col gap-7 p-2 '>
                     <img src={user?.image} alt={`profile-${user?.firstName}`}
                         className='aspect-square w-[78px] rounded-full object-cover'
@@ -35,7 +35,7 @@ const MyProfile = () => {
 
 
             {/* Section 2 */}
-            <div className='flex w-[20%] sm:w-[40%] md:w-[50%] lg:w-[70%] md:justify-between md:items-center lg:justify-between lg:items-center rounded-[0.5rem] bg-richblack-800 px-[3rem] py-4 gap-4 flex-col sm:flex-row'>
+            <div className='flex w-full md:justify-between md:items-center lg:justify-between lg:items-center rounded-[0.5rem] bg-richblack-800 px-[3rem] py-4 gap-4 flex-col lg:flex-row'>
                 <div className='flex flex-col justify-between gap-4'>
                     <p>About</p>
                     <p className='text-richblack-300 text-[16px]'>{user?.additionalDetails?.about ?? "Write Something about yourself"}</p>
@@ -49,7 +49,7 @@ const MyProfile = () => {
             </div>
 
             {/* Section 3 */}
-            <div className='flex flex-col gap-4 w-[20%] sm:w-[40%] md:w-[50%] lg:w-[70%] rounded-[0.5rem] bg-richblack-800 px-[3rem] mt-3 py-6'>
+            <div className='flex flex-col gap-4 w-full rounded-[0.5rem] bg-richblack-800 px-[3rem] mt-3 py-6'>
                 <div className='flex xs:flex-col sm:flex-row gap-2 sm:justify-between md:justify-between'>
                     <p>Personal Details</p>
                     <div className='flex items-center gap-1 w-fit bg-[#1547E0] h-fit px-3 py-1 text-black font-semibold rounded-md cursor-pointer'>

@@ -18,8 +18,8 @@ export default function Instructor() {
       setLoading(true)
       const instructorApiData = await getInstructorData(token)
       const result = await fetchInstructorCourses(token)
-      console.log(instructorApiData)
-      console.log(result);
+      // console.log(instructorApiData)
+      // console.log(result);
       if (instructorApiData?.length) {
         setInstructorData(instructorApiData)
       }
@@ -55,7 +55,7 @@ export default function Instructor() {
         <div className="spinner"></div>
       ) : courses?.length > 0 ? (
         <div>
-          <div className="my-4 flex h-[450px] space-x-4">
+          <div className="my-4 flex md:flex-row flex-col h-[450px] space-x-4 gap-3">
             {/* Render chart / graph */}
             {totalAmount > 0 || totalStudents > 0 ? (
               <InstructorChart courses={instructorData} />

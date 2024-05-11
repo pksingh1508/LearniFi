@@ -98,8 +98,8 @@ const About = () => {
 
             {/* section 7 */}
             <section className='w-11/12 flex items-center mb-[100px] mt-[100px] mx-auto'>
-                <div className='flex flex-col w-full items-center'>
-                    <h1 className='text-3xl font-semibold'><HighlightText text={"Review from other learners"} /></h1>
+                <div className='flex flex-col w-full'>
+                    <h1 className='text-3xl font-semibold mx-auto'><HighlightText text={"Review from other learners"} /></h1>
                     <ReviewSlider />
                 </div>
             </section>
