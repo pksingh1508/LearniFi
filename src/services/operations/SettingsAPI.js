@@ -44,13 +44,15 @@ export function updateDisplayPicture(token, formData) {
   }
 }
 
-export function updateProfile(token, formData) {
+export function updateProfile(token, data) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     try {
-      const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData,
+      // console.log("token ", token);
+      // console.log("formdata: " + data);
+      const response = await apiConnector("PUT", UPDATE_PROFILE_API, data,
         {
-          'Content-Type': 'application/json',
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         })
       console.log("UPDATE_PROFILE_API API RESPONSE............", response)
@@ -78,7 +80,7 @@ export async function changePassword(token, formData) {
   try {
     const response = await apiConnector("POST", CHANGE_PASSWORD_API, formData,
       {
-        'Content-Type': 'application/json',
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
       })
     console.log("CHANGE_PASSWORD_API API RESPONSE............", response)

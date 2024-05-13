@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { studentEndpoints } from "../api";
 import { apiConnector } from "../apiconnector";
-import rzpLogo from "../../assets/Logo/rzp_logo.png"
+import rzpLogo from "../../assets/icons/icons8-circled-l-100.png"
 import { resetCart } from "../../slices/cartSlice";
 
 
@@ -48,7 +48,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
             currency: orderResponse.data.message.currency,
             amount: `${orderResponse.data.message.amount}`,
             order_id: orderResponse.data.message.id,
-            name: "StudyNotion",
+            name: "LearniFi",
             description: "Thank You for purchasing the course",
             image: rzpLogo,
             prefill: {

@@ -20,7 +20,8 @@ export default function EditProfile() {
   } = useForm()
 
   const submitProfileForm = async (data) => {
-    // console.log("Form Data - ", data)
+    console.log("Form Data - ", data);
+    console.log("Token - ", token);
     try {
       dispatch(updateProfile(token, data))
     } catch (error) {
